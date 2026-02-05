@@ -25,7 +25,7 @@ final class CorrelationIdGlobalFilter implements GlobalFilter, Ordered {
                 }))
                 .build();
 
-        mutated.getResponse().getHeaders().set(headerName(), correlationId.value());
+        mutated.getResponse().getHeaders().add(headerName(), correlationId.value());
 
         return chain.filter(mutated);
     }
