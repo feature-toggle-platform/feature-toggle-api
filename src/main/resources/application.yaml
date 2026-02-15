@@ -1,8 +1,7 @@
 app:
   upstream:
-    toggleWrite: http://toggle-write-service:8082
-    toggleRead: http://toggle-read-service:8083
-    project: http://project-service:8081
+    toggleWrite: http://localhost:8082
+    toggleConfiguration: http://localhost:8081
 
 spring:
   application:
@@ -17,30 +16,22 @@ spring:
       server:
         webflux:
           routes:
-            - id: project
-              uri: ${app.upstream.project}
+            - id: toggleConfiguration
+              uri: ${app.upstream.toggleConfiguration}
               predicates:
                 - Path=/api/projects/**
               filters:
-                - StripPrefix=2
-                - PrefixPath=/rest/api/projects
-
-            - id: feature-toggle-read
-              uri: ${app.upstream.toggleRead}
-              predicates:
-                - Path=/api/toggles/read/**
-              filters:
-                - StripPrefix=3
-                - PrefixPath=/rest/api/feature-toggles/read
+                - StripPrefix=1
+                - PrefixPath=/rest/api
 
             - id: feature-toggle-write
               uri: ${app.upstream.toggleWrite}
               predicates:
-                - Path=/api/toggles/write/**
+                - Path=/api/projects/*/environments/*/feature-toggles/**
               filters:
-                - StripPrefix=3
-                - PrefixPath=/rest/api/feature-toggles/write
+                - StripPrefix=1
+                - PrefixPath=/rest/api
 
 server:
-  port: 8080
+  port: 8090
 
