@@ -2,6 +2,7 @@ app:
   upstream:
     toggleWrite: http://localhost:8082
     toggleConfiguration: http://localhost:8081
+    toggleRead: http://localhost:8083
 
 spring:
   application:
@@ -17,6 +18,7 @@ spring:
         webflux:
           routes:
             - id: toggleConfiguration
+              order: 10
               uri: ${app.upstream.toggleConfiguration}
               predicates:
                 - Path=/api/projects/**
@@ -25,13 +27,37 @@ spring:
                 - PrefixPath=/rest/api
 
             - id: feature-toggle-write
+              order: -10
               uri: ${app.upstream.toggleWrite}
               predicates:
-                - Path=/api/projects/*/environments/*/feature-toggles/**
+                - Path=/api/projects/*/environments/*/feature-toggles,/api/projects/*/environments/*/feature-toggles/**
+              filters:
+                - StripPrefix=1
+                - PrefixPath=/rest/api
+
+            - id: feature-toggle-read
+              order: -20
+              uri: ${app.upstream.toggleRead}
+              predicates:
+                - Path=/api/read/**
+              filters:
+                - StripPrefix=1
+                - PrefixPath=/rest/api
+
+            - id: feature-toggle-sdk
+              order: -20
+              uri: ${app.upstream.toggleRead}
+              predicates:
+                - Path=/api/sdk/**
               filters:
                 - StripPrefix=1
                 - PrefixPath=/rest/api
 
 server:
   port: 8090
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
 
