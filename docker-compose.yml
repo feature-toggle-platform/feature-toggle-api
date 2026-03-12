@@ -87,10 +87,19 @@ services:
       retries: 30
     networks: [ feature-toggle ]
 
+  feature-toggle-audit-db-mongo:
+    image: mongo:7
+    container_name: feature-toggle-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
 volumes:
   projects-db-data:
   feature-toggle-write-db-data:
   feature-toggle-read-db-pg-data:
+  mongo-data:
 
 networks:
   feature-toggle:
