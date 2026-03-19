@@ -6,10 +6,10 @@ import org.springframework.core.Ordered;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-import pl.feature.toggle.service.model.security.correlation.CorrelationId;
+import pl.feature.toggle.service.web.correlation.CorrelationId;
 import reactor.core.publisher.Mono;
 
-import static pl.feature.toggle.service.model.security.correlation.CorrelationId.headerName;
+import static pl.feature.toggle.service.web.correlation.CorrelationId.headerName;
 
 @Component
 final class CorrelationIdGlobalFilter implements GlobalFilter, Ordered {
