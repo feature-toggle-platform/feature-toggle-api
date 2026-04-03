@@ -1,4 +1,4 @@
-package com.github.saqie.api.auth;
+package com.configly.api.auth;
 
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -6,10 +6,10 @@ import org.springframework.core.Ordered;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-import pl.feature.toggle.service.web.correlation.CorrelationId;
+import com.configly.web.correlation.CorrelationId;
 import reactor.core.publisher.Mono;
 
-import static pl.feature.toggle.service.web.correlation.CorrelationId.headerName;
+import static com.configly.web.correlation.CorrelationId.headerName;
 
 @Component
 final class CorrelationIdGlobalFilter implements GlobalFilter, Ordered {

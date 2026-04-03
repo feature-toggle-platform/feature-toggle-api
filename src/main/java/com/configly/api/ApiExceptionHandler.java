@@ -1,4 +1,4 @@
-package com.github.saqie.api;
+package com.configly.api;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
@@ -9,9 +9,9 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import pl.feature.toggle.service.web.ErrorCode;
-import pl.feature.toggle.service.web.ErrorResponse;
-import pl.feature.toggle.service.web.correlation.CorrelationId;
+import com.configly.web.ErrorCode;
+import com.configly.web.ErrorResponse;
+import com.configly.web.correlation.CorrelationId;
 
 import java.time.Instant;
 import java.util.stream.Collectors;

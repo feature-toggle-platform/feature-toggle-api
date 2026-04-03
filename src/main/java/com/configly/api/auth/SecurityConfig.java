@@ -1,4 +1,4 @@
-package com.github.saqie.api.auth;
+package com.configly.api.auth;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

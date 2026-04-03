@@ -8,10 +8,10 @@
 		<version>4.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>pl.feature.toggle.service</groupId>
-	<artifactId>feature-toggle-api</artifactId>
+	<groupId>com.configly</groupId>
+	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>api</name>
+	<name>configly-api</name>
 	<url/>
 	<properties>
 		<java.version>21</java.version>
@@ -21,13 +21,13 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>pl.feature.toggle.service</groupId>
-			<artifactId>feature-toggle-model</artifactId>
+			<groupId>com.configly</groupId>
+			<artifactId>model</artifactId>
 			<version>${model.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>pl.feature.toggle.service</groupId>
-			<artifactId>feature-toggle-shared-web</artifactId>
+			<groupId>com.configly</groupId>
+			<artifactId>shared-web</artifactId>
 			<version>${shared-web.version}</version>
 		</dependency>
 		<dependency>

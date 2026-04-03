@@ -1,4 +1,4 @@
-package com.github.saqie.api;
+package com.configly.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
