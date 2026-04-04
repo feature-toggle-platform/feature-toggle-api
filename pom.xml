@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.configly</groupId>
-	<artifactId>api</artifactId>
+	<artifactId>configly-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>configly-api</name>
 	<url/>
@@ -22,12 +22,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.configly</groupId>
-			<artifactId>model</artifactId>
+			<artifactId>configly-model</artifactId>
 			<version>${model.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.configly</groupId>
-			<artifactId>shared-web</artifactId>
+			<artifactId>configly-shared-web</artifactId>
 			<version>${shared-web.version}</version>
 		</dependency>
 		<dependency>
