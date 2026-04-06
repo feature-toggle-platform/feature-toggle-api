@@ -1,9 +1,9 @@
 app:
   upstream:
-    toggleWrite: http://localhost:8082
-    toggleConfiguration: http://localhost:8081
-    toggleRead: http://localhost:8083
-    toggleAudit: http://localhost:8084
+    configlyToggleWrite: http://localhost:8082
+    configlyStructure: http://localhost:8081
+    configlyRead: http://localhost:8083
+    configlyAudit: http://localhost:8084
 
 spring:
   application:
@@ -18,44 +18,44 @@ spring:
       server:
         webflux:
           routes:
-            - id: toggleConfiguration
+            - id: configlyStructure
               order: 10
-              uri: ${app.upstream.toggleConfiguration}
+              uri: ${app.upstream.configlyStructure}
               predicates:
                 - Path=/api/projects/**
               filters:
                 - StripPrefix=1
                 - PrefixPath=/rest/api
 
-            - id: feature-toggle-write
+            - id: configlyToggleWrite
               order: -10
-              uri: ${app.upstream.toggleWrite}
+              uri: ${app.upstream.configlyToggleWrite}
               predicates:
                 - Path=/api/projects/*/environments/*/feature-toggles,/api/projects/*/environments/*/feature-toggles/**
               filters:
                 - StripPrefix=1
                 - PrefixPath=/rest/api
 
-            - id: feature-toggle-read
+            - id: configlyRead
               order: -20
-              uri: ${app.upstream.toggleRead}
+              uri: ${app.upstream.configlyRead}
               predicates:
                 - Path=/api/read/**
               filters:
                 - StripPrefix=1
                 - PrefixPath=/rest/api
 
-            - id: feature-toggle-sdk
+            - id: configly-sdk
               order: -20
-              uri: ${app.upstream.toggleRead}
+              uri: ${app.upstream.configlyRead}
               predicates:
                 - Path=/api/sdk/**
               filters:
                 - StripPrefix=1
                 - PrefixPath=/rest/api
 
-            - id: feature-toggle-audit
-              uri: ${app.upstream.toggleAudit}
+            - id: configlyAudit
+              uri: ${app.upstream.configlyAudit}
               predicates:
                 - Path=/api/audit/**
               filters:

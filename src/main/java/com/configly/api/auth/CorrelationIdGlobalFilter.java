@@ -1,15 +1,16 @@
 package com.configly.api.auth;
 
+import com.configly.web.model.correlation.CorrelationId;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-import com.configly.web.correlation.CorrelationId;
 import reactor.core.publisher.Mono;
 
-import static com.configly.web.correlation.CorrelationId.headerName;
+import static com.configly.web.model.correlation.CorrelationId.headerName;
+
 
 @Component
 final class CorrelationIdGlobalFilter implements GlobalFilter, Ordered {
